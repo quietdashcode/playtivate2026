@@ -1,0 +1,13 @@
+- [x] Verify that the copilot-instructions.md file in the .github directory is created.
+- [x] Clarify Project Requirements: Playtivate marketing site in React, replacing WordPress and focusing on VR/AR, e-learning, and serious games.
+- [x] Scaffold the Project: Created a Vite-style React app in the current workspace root after the interactive Vite CLI conflicted with existing planning files.
+- [x] Customize the Project: Implemented the new site structure, copy, service pages, curated case studies, About page, Contact page, and visual system.
+- [x] Install Required Extensions: No extensions were required by project setup guidance.
+- [x] Compile the Project: `npm install` and `npm run build` completed successfully.
+- [x] Create and Run Task: Added workspace tasks for install, dev server, and build in `.vscode/tasks.json`.
+- [ ] Launch the Project: Pending user confirmation for running the dev server or starting a debug session.
+- [x] Ensure Documentation is Complete: `README.md` and this file were updated to reflect the current project state.
+
+- Work through each checklist item systematically.
+- Keep communication concise and focused.
+- Follow development best practices.
