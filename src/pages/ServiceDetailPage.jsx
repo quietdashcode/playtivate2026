@@ -19,7 +19,7 @@ function ServiceDetailPage() {
 
   const caseStudies = getCaseStudiesByService(service.slug);
   const referenceTitle = service.slug === 'serious-games'
-    ? 'Reference work in Serious\u00A0Games'
+    ? 'Reference work in Serious Games'
     : `Reference work in ${service.shortLabel}`;
 
   return (
