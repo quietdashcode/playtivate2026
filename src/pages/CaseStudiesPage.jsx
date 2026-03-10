@@ -23,6 +23,7 @@ function CaseStudiesPage() {
   return (
     <>
       <PageHero
+        className="page-hero--single-line"
         // eyebrow="Case Studies"
         title="Selected work across immersive learning, digital courseware, and serious games."
         body="A curated selection of Playtivate projects across healthcare, education, government, and enterprise, showing how interactive experiences can support learning, engagement, and real-world outcomes."

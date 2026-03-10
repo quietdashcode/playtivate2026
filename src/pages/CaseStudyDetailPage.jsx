@@ -30,6 +30,7 @@ function CaseStudyDetailPage() {
   return (
     <>
       <PageHero
+        className="page-hero--single-line"
         eyebrow={`${caseStudy.category} / ${caseStudy.sector}`}
         title={caseStudy.title}
         body={caseStudy.summary}
@@ -90,7 +91,7 @@ function CaseStudyDetailPage() {
         <section className="content-section accent-surface">
           <div className="section-heading">
             <p className="eyebrow">Related Projects</p>
-            <h2>More work in this area</h2>
+            <h2 className="section-title-single-line">More work in this area</h2>
           </div>
           <div className="related-links">
             {relatedCaseStudies.map((item) => (

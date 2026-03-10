@@ -30,6 +30,7 @@ function ServicesPage() {
   return (
     <>
       <PageHero
+        className="page-hero--single-line"
         // eyebrow="Services"
         title="Digital experiences designed around learning, training, and engagement."
         body="Playtivate helps organizations solve communication and capability challenges through immersive technology, interactive learning, and applied game design."
@@ -38,6 +39,7 @@ function ServicesPage() {
 
       <section className="content-section">
         <SectionHeading
+          className="section-heading--single-line"
           eyebrow="What We Offer"
           title="Three core service areas with one integrated delivery approach"
           body="Each service combines strategy, content design, interaction design, and production to create experiences that are useful, engaging, and aligned to clear objectives."
@@ -52,6 +54,7 @@ function ServicesPage() {
       <section className="content-section split-layout accent-surface">
         <div>
           <SectionHeading
+            className="section-heading--single-line"
             eyebrow="Use Cases"
             title="Common challenges we help solve"
           />
@@ -63,6 +66,7 @@ function ServicesPage() {
         </div>
         <div>
           <SectionHeading
+            className="section-heading--single-line"
             eyebrow="Capabilities"
             title="Capabilities across the full delivery cycle"
           />

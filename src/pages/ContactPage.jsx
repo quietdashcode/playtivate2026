@@ -14,6 +14,7 @@ function ContactPage() {
   return (
     <>
       <PageHero
+        className="page-hero--single-line"
         // eyebrow="Contact"
         title="Let's discuss what you need to build."
         body="If you are planning a VR/AR experience, e-learning product, or serious game, we can help shape the concept and recommend the right approach."
@@ -22,7 +23,7 @@ function ContactPage() {
 
       <section className="content-section split-layout">
         <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="section-heading">
+          <div className="section-heading section-heading--single-line">
             <p className="eyebrow">Start The Conversation</p>
             <h2>Tell us about your goals, audience, and timeline.</h2>
             <p>We will follow up with the next steps.</p>

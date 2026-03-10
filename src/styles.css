@@ -426,6 +426,27 @@ main > :nth-child(6) { animation-delay: 260ms; }
   letter-spacing: -0.04em;
 }
 
+.section-heading--single-line {
+  max-width: none;
+}
+
+.section-heading--single-line h2 {
+  font-size: clamp(1.65rem, 2.2vw, 2.55rem);
+  white-space: nowrap;
+  letter-spacing: -0.04em;
+}
+
+.section-title-single-line {
+  white-space: nowrap;
+}
+
+.page-hero--single-line h1 {
+  max-width: none;
+  font-size: clamp(2.2rem, 3.4vw, 4.2rem);
+  white-space: nowrap;
+  text-wrap: nowrap;
+}
+
 /* --- Client strip --- */
 .client-strip {
   display: grid;
@@ -781,6 +802,11 @@ main > :nth-child(6) { animation-delay: 260ms; }
 .story-card.full-width { grid-column: 1 / -1; }
 .related-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .related-link  { display: flex; flex-direction: column; gap: 10px; }
+.related-link span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .detail-visual-section { padding: 18px; }
 .detail-visual-frame {
@@ -1008,6 +1034,15 @@ main > :nth-child(6) { animation-delay: 260ms; }
   .recognition-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .section-heading--home-single-line { max-width: 860px; }
   .section-heading--home-single-line h2 { white-space: normal; }
+  .section-heading--single-line { max-width: 860px; }
+  .section-heading--single-line h2 { white-space: normal; }
+  .section-title-single-line { white-space: normal; }
+  .page-hero--single-line h1 { white-space: normal; text-wrap: balance; }
+  .related-link span {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
   .sector-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sector-row { padding: 32px 28px; }
   .sector-row:nth-child(n+2) { border-left: none; }
