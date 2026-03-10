@@ -416,6 +416,16 @@ main > :nth-child(6) { animation-delay: 260ms; }
 .section-heading { position: relative; z-index: 1; max-width: 860px; margin-bottom: 36px; }
 .section-heading p:not(.eyebrow) { color: var(--muted); }
 
+.section-heading--home-single-line {
+  max-width: none;
+}
+
+.section-heading--home-single-line h2 {
+  font-size: clamp(1.65rem, 2.35vw, 2.45rem);
+  white-space: nowrap;
+  letter-spacing: -0.04em;
+}
+
 /* --- Client strip --- */
 .client-strip {
   display: grid;
@@ -996,6 +1006,8 @@ main > :nth-child(6) { animation-delay: 260ms; }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .recognition-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .section-heading--home-single-line { max-width: 860px; }
+  .section-heading--home-single-line h2 { white-space: normal; }
   .sector-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sector-row { padding: 32px 28px; }
   .sector-row:nth-child(n+2) { border-left: none; }

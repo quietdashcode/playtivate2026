@@ -77,6 +77,7 @@ function HomePage() {
 
       <section className="content-section services-band">
         <SectionHeading
+          className="section-heading--home-single-line"
           eyebrow="Services"
           title="Digital experiences with a real-world purpose"
           body="We combine instructional thinking, interaction design, and immersive technology to deliver products people can understand and use."
@@ -90,6 +91,7 @@ function HomePage() {
 
       <section className="content-section accent-surface">
         <SectionHeading
+          className="section-heading--home-single-line"
           eyebrow="Selected Work"
           title="Proof across healthcare, education, and public sector engagement"
           body="A curated set of case studies that show how Playtivate turns learning and engagement goals into digital experiences that people actively use."
@@ -103,6 +105,7 @@ function HomePage() {
 
       <section className="content-section">
         <SectionHeading
+          className="section-heading--home-single-line"
           eyebrow="Why Playtivate"
           title="Built on experience. Focused on outcomes."
           body="With more than two decades of experience, Playtivate brings together game design, learning design, and immersive development to create experiences that help people understand, practice, remember, and engage."
@@ -112,6 +115,7 @@ function HomePage() {
 
       <section className="content-section process-layout">
         <SectionHeading
+          className="section-heading--home-single-line"
           eyebrow="How We Work"
           title="From concept definition to launch support"
           body="We work closely with clients from concept to launch, aligning design, content, and technology around a clear learning or engagement goal."
@@ -123,6 +127,7 @@ function HomePage() {
 
       <section className="content-section sector-band">
         <SectionHeading
+          className="section-heading--home-single-line"
           eyebrow="Where We Work"
           title="Experience across sectors where clarity and participation matter"
           body="Our work spans education, healthcare, government, and enterprise environments where digital experiences need to deliver more than surface-level novelty."
