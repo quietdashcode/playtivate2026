@@ -25,9 +25,11 @@ function ServiceDetailPage() {
   return (
     <>
       <PageHero
+        className="page-hero--brighter-image"
         eyebrow={service.shortLabel}
         title={service.tagline}
         body={service.summary}
+        image={service.heroImage}
       />
 
       <section className="content-section split-layout">

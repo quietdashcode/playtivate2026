@@ -78,6 +78,7 @@ export const services = [
     slug: 'vr-ar',
     shortLabel: 'VR/AR',
     title: 'VR/AR Experiences',
+    heroImage: '/images/case-studies/smart-nation-cityscape.png',
     tagline: 'Immersive experiences that make complex ideas easier to understand.',
     summary:
       'Playtivate designs immersive experiences that help people visualize, explore, and practice in ways that traditional formats cannot support effectively.',
@@ -102,6 +103,7 @@ export const services = [
     slug: 'e-learning',
     shortLabel: 'E-Learning',
     title: 'E-Learning Solutions',
+    heroImage: '/images/case-studies/secondary-school-chinese-digital-interactive-resources.png',
     tagline: 'Digital learning experiences built for clarity, participation, and scale.',
     summary:
       'Playtivate creates e-learning content that moves beyond passive screens, using interaction, media, and structure to keep learners engaged and help key concepts stick.',
@@ -126,6 +128,7 @@ export const services = [
     slug: 'serious-games',
     shortLabel: 'Serious Games',
     title: 'Serious Games',
+    heroImage: '/images/case-studies/gallery/captains-of-lives-super-challenge-2.png',
     tagline: 'Applied games designed to improve learning, practice, and decision-making.',
     summary:
       'Playtivate develops serious games that turn formal content into active participation, helping people learn through challenge, feedback, progression, and consequence.',
