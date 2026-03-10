@@ -61,6 +61,7 @@ function ServiceDetailPage() {
 
       <section className="content-section accent-surface">
         <SectionHeading
+          className="section-heading--single-line"
           eyebrow="Selected Case Studies"
           title={referenceTitle}
           body="These projects show how Playtivate applies the service in real learning, training, and engagement contexts."
