@@ -447,6 +447,13 @@ main > :nth-child(6) { animation-delay: 260ms; }
   text-wrap: nowrap;
 }
 
+.page-hero--wide-title h1 {
+  max-width: min(24ch, 100%);
+  font-size: clamp(2.35rem, 4.1vw, 4.6rem);
+  white-space: normal;
+  text-wrap: balance;
+}
+
 /* --- Client strip --- */
 .client-strip {
   display: grid;
@@ -1038,6 +1045,7 @@ main > :nth-child(6) { animation-delay: 260ms; }
   .section-heading--single-line h2 { white-space: normal; }
   .section-title-single-line { white-space: normal; }
   .page-hero--single-line h1 { white-space: normal; text-wrap: balance; }
+  .page-hero--wide-title h1 { max-width: none; }
   .related-link span {
     white-space: normal;
     overflow: visible;

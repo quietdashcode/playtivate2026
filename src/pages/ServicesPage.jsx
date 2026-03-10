@@ -30,7 +30,7 @@ function ServicesPage() {
   return (
     <>
       <PageHero
-        className="page-hero--single-line"
+        className="page-hero--wide-title"
         // eyebrow="Services"
         title="Digital experiences designed around learning, training, and engagement."
         body="Playtivate helps organizations solve communication and capability challenges through immersive technology, interactive learning, and applied game design."

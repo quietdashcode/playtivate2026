@@ -77,7 +77,7 @@ function AboutPage() {
   return (
     <>
       <PageHero
-        className="page-hero--single-line"
+        className="page-hero--wide-title"
         // eyebrow="About"
         title="An interactive studio focused on learning, engagement, and positive outcomes."
         body="Since 1997, Playtivate has designed and developed games and interactive experiences for organizations that need people to learn, understand, participate, and act."
