@@ -14,6 +14,24 @@ function ContactPage() {
   const [csrfToken, setCsrfToken] = useState('');
   const [tokenStatus, setTokenStatus] = useState('loading');
 
+  async function fetchToken() {
+    const response = await fetch(tokenEndpoint, {
+      cache: 'no-store',
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    const result = await response.json().catch(() => null);
+
+    if (!response.ok || !result?.ok || !result?.token) {
+      throw new Error('Unable to initialize the contact form right now.');
+    }
+
+    return result.token;
+  }
+
   useEffect(() => {
     let ignore = false;
 
@@ -21,20 +39,10 @@ function ContactPage() {
       try {
         setTokenStatus('loading');
 
-        const response = await fetch(tokenEndpoint, {
-          headers: {
-            Accept: 'application/json',
-          },
-        });
-
-        const result = await response.json().catch(() => null);
-
-        if (!response.ok || !result?.ok || !result?.token) {
-          throw new Error('Unable to initialize the contact form right now.');
-        }
+        const token = await fetchToken();
 
         if (!ignore) {
-          setCsrfToken(result.token);
+          setCsrfToken(token);
           setTokenStatus('ready');
         }
       } catch {
@@ -71,6 +79,11 @@ function ContactPage() {
       setMessage('');
 
       const response = await fetch(formEndpoint, {
+        cache: 'no-store',
+        credentials: 'same-origin',
+        headers: {
+          Accept: 'application/json',
+        },
         method: 'POST',
         body: formData,
       });
@@ -90,20 +103,27 @@ function ContactPage() {
       setStatus('success');
       setMessage(result.message || 'Thanks. Your enquiry has been sent.');
 
-      const tokenResponse = await fetch(tokenEndpoint, {
-        headers: {
-          Accept: 'application/json',
-        },
-      });
-      const tokenResult = await tokenResponse.json().catch(() => null);
-
-      if (tokenResponse.ok && tokenResult?.ok && tokenResult?.token) {
-        setCsrfToken(tokenResult.token);
+      try {
+        const token = await fetchToken();
+        setCsrfToken(token);
         setTokenStatus('ready');
-      } else {
+      } catch {
         setTokenStatus('error');
       }
     } catch (error) {
+      if (error instanceof Error && /session expired|secure form session expired/i.test(error.message)) {
+        setCsrfToken('');
+        setTokenStatus('loading');
+
+        try {
+          const token = await fetchToken();
+          setCsrfToken(token);
+          setTokenStatus('ready');
+        } catch {
+          setTokenStatus('error');
+        }
+      }
+
       setStatus('error');
       setMessage(
         error instanceof Error

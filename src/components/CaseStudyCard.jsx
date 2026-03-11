@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom';
 
 function CaseStudyCard({ caseStudy }) {
+  const mediaClassName = [
+    'case-study-media',
+    caseStudy.slug === 'ops-battleforce-2' ? 'case-study-media--center-focus' : '',
+  ].filter(Boolean).join(' ');
+
   return (
     <article className="case-study-card">
       {caseStudy.image ? (
-        <Link className="case-study-media" to={`/case-studies/${caseStudy.slug}`}>
+        <Link className={mediaClassName} to={`/case-studies/${caseStudy.slug}`}>
           <img alt={caseStudy.title} loading="lazy" src={caseStudy.image} />
         </Link>
       ) : null}

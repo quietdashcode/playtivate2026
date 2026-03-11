@@ -258,7 +258,7 @@ export const caseStudies = [
   },
   {
     slug: 'pre-university-chinese-subjects-animation',
-    title: 'Pre-University Chinese Subjects Animation',
+    title: 'Pre-University Chinese Subjects Animations',
     category: 'E-Learning',
     sector: 'Education',
     serviceSlug: 'e-learning',
