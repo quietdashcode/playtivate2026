@@ -1,252 +1,82 @@
-import { useEffect, useState } from 'react';
 import PageHero from '../components/PageHero';
-import { assetPath } from '../utils/assetPath';
-
-const serviceOptions = ['VR/AR', 'E-Learning', 'Serious Games', 'Not Sure Yet'];
-const formEndpoint = assetPath('/contact.php');
-const tokenEndpoint = assetPath('/contact-token.php');
-const singaporeOfficeMapUrl = 'https://www.google.com/maps/search/?api=1&query=60+Paya+Lebar+Road+%2305-41+Paya+Lebar+Square+Singapore+409051';
-const malaysiaOfficeMapUrl = 'https://www.google.com/maps/search/?api=1&query=B-26-09+Trefoil+Setia+City+No.+2+Jalan+Setia+Dagang+AH+U13%2FAH+Setia+Alam+Seksyen+U13+40170+Shah+Alam+Selangor';
+const offices = [
+  {
+    name: 'Singapore HQ',
+    address: '60 Paya Lebar Road, #05-41 Paya Lebar Square, Singapore 409051',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=60+Paya+Lebar+Road+%2305-41+Paya+Lebar+Square+Singapore+409051',
+    embedUrl: 'https://maps.google.com/maps?q=60%20Paya%20Lebar%20Road%20%2305-41%20Paya%20Lebar%20Square%20Singapore%20409051&z=16&output=embed',
+  },
+  {
+    name: 'Malaysia Office',
+    address: 'B-26-09 Trefoil@Setia City, No. 2, Jalan Setia Dagang AH U13/AH, Setia Alam, Seksyen U13, 40170 Shah Alam, Selangor',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=B-26-09+Trefoil+Setia+City+No.+2+Jalan+Setia+Dagang+AH+U13%2FAH+Setia+Alam+Seksyen+U13+40170+Shah+Alam+Selangor',
+    embedUrl: 'https://maps.google.com/maps?q=B-26-09%20Trefoil%40Setia%20City%20No.%202%20Jalan%20Setia%20Dagang%20AH%20U13%2FAH%20Setia%20Alam%20Seksyen%20U13%2040170%20Shah%20Alam%20Selangor&z=16&output=embed',
+  },
+];
 
 function ContactPage() {
-  const [status, setStatus] = useState('idle');
-  const [message, setMessage] = useState('');
-  const [csrfToken, setCsrfToken] = useState('');
-  const [tokenStatus, setTokenStatus] = useState('loading');
-
-  async function fetchToken() {
-    const response = await fetch(tokenEndpoint, {
-      cache: 'no-store',
-      credentials: 'same-origin',
-      headers: {
-        Accept: 'application/json',
-      },
-    });
-
-    const result = await response.json().catch(() => null);
-
-    if (!response.ok || !result?.ok || !result?.token) {
-      throw new Error('Unable to initialize the contact form right now.');
-    }
-
-    return result.token;
-  }
-
-  useEffect(() => {
-    let ignore = false;
-
-    async function loadToken() {
-      try {
-        setTokenStatus('loading');
-
-        const token = await fetchToken();
-
-        if (!ignore) {
-          setCsrfToken(token);
-          setTokenStatus('ready');
-        }
-      } catch {
-        if (!ignore) {
-          setCsrfToken('');
-          setTokenStatus('error');
-        }
-      }
-    }
-
-    loadToken();
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-
-    if (!csrfToken) {
-      setStatus('error');
-      setMessage('The form is not ready yet. Please refresh the page or email info@playtivate.com.');
-      return;
-    }
-
-    const formData = new FormData(form);
-    formData.set('csrfToken', csrfToken);
-
-    try {
-      setStatus('loading');
-      setMessage('');
-
-      const response = await fetch(formEndpoint, {
-        cache: 'no-store',
-        credentials: 'same-origin',
-        headers: {
-          Accept: 'application/json',
-        },
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json().catch(() => null);
-
-      if (!response.ok || !result?.ok) {
-        throw new Error(
-          result?.message
-            || 'Unable to send your message right now. Please email info@playtivate.com instead.',
-        );
-      }
-
-      form.reset();
-      setCsrfToken('');
-      setTokenStatus('loading');
-      setStatus('success');
-      setMessage(result.message || 'Thanks. Your enquiry has been sent.');
-
-      try {
-        const token = await fetchToken();
-        setCsrfToken(token);
-        setTokenStatus('ready');
-      } catch {
-        setTokenStatus('error');
-      }
-    } catch (error) {
-      if (error instanceof Error && /session expired|secure form session expired/i.test(error.message)) {
-        setCsrfToken('');
-        setTokenStatus('loading');
-
-        try {
-          const token = await fetchToken();
-          setCsrfToken(token);
-          setTokenStatus('ready');
-        } catch {
-          setTokenStatus('error');
-        }
-      }
-
-      setStatus('error');
-      setMessage(
-        error instanceof Error
-          ? error.message
-          : 'Unable to send your message right now. Please email info@playtivate.com instead.',
-      );
-
-      if (tokenStatus !== 'ready') {
-        setTokenStatus('error');
-      }
-    }
-  }
-
   return (
     <>
       <PageHero
         className="page-hero--single-line page-hero--brighter-image"
-        // eyebrow="Contact"
         title="Let's discuss what you need to build."
-        body="If you are planning a VR/AR experience, e-learning product, or serious game, we can help shape the concept and recommend the right approach."
+        body="If you are planning a VR/AR experience, e-learning product, or serious game, reach us by email or use the maps below to find the right office."
         image="/images/heroes/contact.jpg"
       />
 
-      <section className="content-section split-layout">
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="section-heading">
-            <p className="eyebrow">Start The Conversation</p>
-            <h2>Tell us about your goals, audience, and timeline.</h2>
-            <p>We will follow up with the next steps.</p>
+      <section className="content-section accent-surface">
+        <div className="contact-layout">
+          <aside className="detail-panel contact-rail">
+            <div className="contact-rail-header">
+              <p className="eyebrow">Contact</p>
+            </div>
+
+            <h2 className="contact-rail-title">Start the conversation.</h2>
+            <p className="contact-rail-copy">
+              Send project briefs, partnership enquiries, or general questions and we will route
+              you to the right team.
+            </p>
+
+            <div className="contact-actions">
+              <a className="button primary" href="mailto:info@playtivate.com">info@playtivate.com</a>
+            </div>
+
+            <div className="contact-rail-meta">
+              <div className="contact-rail-meta-card">
+                <strong>2</strong>
+                <span>office locations</span>
+              </div>
+              <div className="contact-rail-meta-card">
+                <strong>SG + MY</strong>
+                <span>regional coverage</span>
+              </div>
+            </div>
+          </aside>
+
+          <div className="office-grid">
+          {offices.map((office) => (
+            <article className="story-card office-card" key={office.name}>
+              <p className="eyebrow">Office</p>
+              <h2>{office.name}</h2>
+              <p className="office-address">{office.address}</p>
+              <div className="contact-actions">
+                <a className="button secondary" href={office.mapsUrl} rel="noreferrer" target="_blank">
+                  Open In Google Maps
+                </a>
+              </div>
+              <div className="office-map-frame">
+                <iframe
+                  className="office-map"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={office.embedUrl}
+                  title={`${office.name} map`}
+                />
+              </div>
+            </article>
+          ))}
           </div>
-
-          <input
-            autoComplete="off"
-            className="contact-form-honeypot"
-            name="website"
-            tabIndex="-1"
-            type="text"
-          />
-
-          <label>
-            Name
-            <input maxLength="120" name="name" required type="text" />
-          </label>
-          <label>
-            Organization
-            <input maxLength="160" name="organization" required type="text" />
-          </label>
-          <label>
-            Email
-            <input name="email" required type="email" />
-          </label>
-          <label>
-            Service Interest
-            <select defaultValue="VR/AR" name="serviceInterest">
-              {serviceOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Project Goals
-            <textarea minLength="20" name="projectGoals" required rows="5" />
-          </label>
-          <label>
-            Timeline
-            <input maxLength="120" name="timeline" type="text" />
-          </label>
-
-          <button
-            className="button primary"
-            disabled={status === 'loading' || tokenStatus !== 'ready'}
-            type="submit"
-          >
-            {status === 'loading' ? 'Sending...' : 'Send Enquiry'}
-          </button>
-
-          {message ? (
-            <p className={`form-note ${status === 'error' ? 'form-note-error' : 'form-note-success'}`}>
-              {message}
-            </p>
-          ) : tokenStatus === 'loading' ? (
-            <p className="form-note">Preparing secure form session...</p>
-          ) : tokenStatus === 'error' ? (
-            <p className="form-note form-note-error">
-              The form is only available when this site is running on PHP hosting. For now, email
-              {' '}
-              <a className="contact-link" href="mailto:info@playtivate.com">info@playtivate.com</a>.
-            </p>
-          ) : (
-            <p className="form-note">
-              This form uses a secure server-side mail handler on PHP hosting.
-            </p>
-          )}
-        </form>
-
-        <aside className="detail-panel contact-panel">
-          <p className="eyebrow">Locations</p>
-          <h2>Singapore HQ and Malaysia office</h2>
-          <div className="office-block">
-            <strong>Singapore HQ</strong>
-            <p>
-              <a className="contact-link" href={singaporeOfficeMapUrl} rel="noreferrer" target="_blank">
-                60 Paya Lebar Road, #05-41 Paya Lebar Square, Singapore 409051
-              </a>
-            </p>
-          </div>
-          <div className="office-block">
-            <strong>Malaysia Office</strong>
-            <p>
-              <a className="contact-link" href={malaysiaOfficeMapUrl} rel="noreferrer" target="_blank">
-                B-26-09 Trefoil@Setia City, No. 2, Jalan Setia Dagang AH U13/AH,
-                {' '}
-                Setia Alam, Seksyen U13, 40170 Shah Alam, Selangor
-              </a>
-            </p>
-          </div>
-          <div className="office-block">
-            <strong>Email</strong>
-            <p><a className="contact-link" href="mailto:info@playtivate.com">info@playtivate.com</a></p>
-          </div>
-        </aside>
+        </div>
       </section>
     </>
   );

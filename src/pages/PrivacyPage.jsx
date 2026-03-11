@@ -15,9 +15,9 @@ function PrivacyPage() {
             <p className="eyebrow">Overview</p>
             <h2>We only collect the information needed to respond to your enquiry.</h2>
             <p>
-              When you contact Playtivate through this website, we may collect your
-              name, organization, email address, service interest, project details,
-              and timeline so we can review your request and follow up appropriately.
+              When you contact Playtivate by email, we may collect the details you
+              choose to share, such as your name, organization, email address, and
+              project information so we can review your request and follow up appropriately.
             </p>
           </div>
         </div>
@@ -35,11 +35,11 @@ function PrivacyPage() {
         <div className="story-grid">
           <article className="story-card">
             <p className="eyebrow">Data Handling</p>
-            <h2>Contact form information</h2>
+            <h2>Email enquiries</h2>
             <p>
-              Information submitted through the contact form is sent to Playtivate by
-              email and may be stored in our business communication systems for client
-              service, project evaluation, and operational follow-up.
+              Information sent to Playtivate by email may be stored in our business
+              communication systems for client service, project evaluation, and
+              operational follow-up.
             </p>
           </article>
           <article className="story-card">
