@@ -553,7 +553,12 @@ export const caseStudies = [
     serviceSlug: 'serious-games',
     client: 'National Environment Agency',
     image: '/images/case-studies/nea-mace-genesis.jpg',
-    gallery: buildCaseStudyGallery('nea-mace-genesis', 3, 'jpg'),
+    gallery: [
+      '/images/case-studies/gallery/mace-screen1.png',
+      '/images/case-studies/gallery/mace-screen2.png',
+      '/images/case-studies/gallery/mace-screen3.png',
+      '/images/case-studies/gallery/nea-mace-genesis-2.jpg',
+    ],
     summary:
       'A 3D multiplayer first-person shooter designed to educate students on dengue prevention through competitive team-based gameplay.',
     challenge:
