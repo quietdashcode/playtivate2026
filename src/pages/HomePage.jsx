@@ -48,7 +48,7 @@ function HomePage() {
         <div className="hero-media" aria-hidden="true">
           <img
             alt=""
-            src={assetPath('/images/home/playtivate-home-hero.jpg')}
+            src={assetPath('/images/home/home-hero2.png')}
           />
         </div>
         <div className="hero-scrim" aria-hidden="true" />
@@ -62,7 +62,7 @@ function HomePage() {
             that turn complex ideas into clear, engaging digital journeys for education,
             healthcare, government, and enterprise teams.
           </p>
-          <div className="button-row">
+          <div className="button-row hero-cta-row">
             <Link className="button primary" to="/contact">
               Discuss Your Project
             </Link>

@@ -31,5 +31,9 @@ It includes:
 
 ## Notes
 
-- The contact form is a front-end placeholder and is ready for backend or CRM wiring.
+- The contact form posts to `contact.php` and requires PHP-capable hosting for production.
+- The form also requests `contact-token.php` to create a session-backed CSRF token before submission.
+- The PHP handler now checks request origin, enforces a basic IP rate limit, validates allowed service values, and requires at least a short project brief.
+- Update `public/contact.php` with the final recipient and from-address settings that match the production domain's mail configuration.
+- GitHub Pages review builds remain static and cannot execute the PHP mail handler.
 - The current visual system uses CSS only and no external media assets yet.

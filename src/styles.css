@@ -261,6 +261,10 @@ main > :nth-child(6) { animation-delay: 260ms; }
 
 .hero-text { font-size: 1.08rem; line-height: 1.72; color: rgba(255,255,255,0.8); max-width: 54ch; }
 
+.hero-cta-row {
+  margin-top: -10px;
+}
+
 .hero-text,
 .page-hero p:not(.eyebrow),
 .section-heading p,
@@ -977,7 +981,26 @@ main > :nth-child(6) { animation-delay: 260ms; }
   outline: 0;
 }
 
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.8;
+}
+
+.contact-form-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .form-note { color: var(--muted); font-size: 0.88rem; }
+.form-note-success { color: var(--teal); }
+.form-note-error { color: var(--orange); }
 .office-block + .office-block { margin-top: 20px; }
 
 /* --- CTA panel --- */
