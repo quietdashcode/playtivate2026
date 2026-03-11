@@ -1001,6 +1001,27 @@ main > :nth-child(6) { animation-delay: 260ms; }
 .form-note { color: var(--muted); font-size: 0.88rem; }
 .form-note-success { color: var(--teal); }
 .form-note-error { color: var(--orange); }
+.contact-link,
+.footer-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.contact-link:hover,
+.footer-link:hover {
+  color: var(--indigo);
+}
+
+.footer-link:hover {
+  color: rgba(255,255,255,0.92);
+}
+
+.office-block p {
+  margin: 0;
+}
+
 .office-block + .office-block { margin-top: 20px; }
 
 /* --- CTA panel --- */
@@ -1040,12 +1061,32 @@ main > :nth-child(6) { animation-delay: 260ms; }
 .footer-brand p { max-width: 500px; font-size: 0.9rem; color: rgba(255,255,255,0.44); }
 
 .footer-meta {
+  display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
   font-size: 0.88rem;
   color: rgba(255,255,255,0.44);
   text-align: right;
+}
+
+.footer-link {
+  color: rgba(255,255,255,0.72);
+}
+
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 16px;
+}
+
+.footer-copyright {
+  color: rgba(255,255,255,0.44);
+}
+
+.legal-panel ul {
+  margin: 0;
 }
 
 /* --- Misc --- */

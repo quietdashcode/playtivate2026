@@ -45,8 +45,12 @@ function SiteLayout() {
           </p>
         </div>
         <div className="footer-meta">
-          <span>Singapore and Malaysia</span>
-          <span>info@playtivate.com</span>
+          <a className="footer-link" href="mailto:info@playtivate.com">info@playtivate.com</a>
+          <div className="footer-legal-links">
+            <NavLink className="footer-link" to="/terms">Terms and Conditions</NavLink>
+            <NavLink className="footer-link" to="/privacy">Privacy Policy</NavLink>
+          </div>
+          <span className="footer-copyright">© 2026 Playtivate. All rights reserved.</span>
         </div>
       </footer>
     </div>

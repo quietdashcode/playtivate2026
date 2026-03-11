@@ -5,6 +5,8 @@ import { assetPath } from '../utils/assetPath';
 const serviceOptions = ['VR/AR', 'E-Learning', 'Serious Games', 'Not Sure Yet'];
 const formEndpoint = assetPath('/contact.php');
 const tokenEndpoint = assetPath('/contact-token.php');
+const singaporeOfficeMapUrl = 'https://www.google.com/maps/search/?api=1&query=60+Paya+Lebar+Road+%2305-41+Paya+Lebar+Square+Singapore+409051';
+const malaysiaOfficeMapUrl = 'https://www.google.com/maps/search/?api=1&query=B-26-09+Trefoil+Setia+City+No.+2+Jalan+Setia+Dagang+AH+U13%2FAH+Setia+Alam+Seksyen+U13+40170+Shah+Alam+Selangor';
 
 function ContactPage() {
   const [status, setStatus] = useState('idle');
@@ -190,7 +192,7 @@ function ContactPage() {
             <p className="form-note form-note-error">
               The form is only available when this site is running on PHP hosting. For now, email
               {' '}
-              info@playtivate.com.
+              <a className="contact-link" href="mailto:info@playtivate.com">info@playtivate.com</a>.
             </p>
           ) : (
             <p className="form-note">
@@ -201,21 +203,28 @@ function ContactPage() {
 
         <aside className="detail-panel contact-panel">
           <p className="eyebrow">Locations</p>
-          <h2>Singapore and Malaysia</h2>
+          <h2>Singapore HQ and Malaysia office</h2>
           <div className="office-block">
-            <strong>Singapore Office</strong>
-            <p>60 Paya Lebar Road, #05-41 Paya Lebar Square, Singapore 409051</p>
+            <strong>Singapore HQ</strong>
+            <p>
+              <a className="contact-link" href={singaporeOfficeMapUrl} rel="noreferrer" target="_blank">
+                60 Paya Lebar Road, #05-41 Paya Lebar Square, Singapore 409051
+              </a>
+            </p>
           </div>
           <div className="office-block">
             <strong>Malaysia Office</strong>
             <p>
-              B-26-09 Trefoil@Setia City, No. 2, Jalan Setia Dagang AH U13/AH,
-              Setia Alam, Seksyen U13, 40170 Shah Alam, Selangor
+              <a className="contact-link" href={malaysiaOfficeMapUrl} rel="noreferrer" target="_blank">
+                B-26-09 Trefoil@Setia City, No. 2, Jalan Setia Dagang AH U13/AH,
+                {' '}
+                Setia Alam, Seksyen U13, 40170 Shah Alam, Selangor
+              </a>
             </p>
           </div>
           <div className="office-block">
             <strong>Email</strong>
-            <p>info@playtivate.com</p>
+            <p><a className="contact-link" href="mailto:info@playtivate.com">info@playtivate.com</a></p>
           </div>
         </aside>
       </section>

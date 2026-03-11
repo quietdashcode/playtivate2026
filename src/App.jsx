@@ -6,8 +6,10 @@ import CaseStudyDetailPage from './pages/CaseStudyDetailPage';
 import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
+import PrivacyPage from './pages/PrivacyPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import ServicesPage from './pages/ServicesPage';
+import TermsPage from './pages/TermsPage';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="case-studies/:caseStudySlug" element={<CaseStudyDetailPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="privacy" element={<PrivacyPage />} />
+        <Route path="terms" element={<TermsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
